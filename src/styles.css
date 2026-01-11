@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Light Mode */
+  --bg-color: #f8f9fa;
+  --surface-bg: #ffffff;
+  --text-color: #212529;
+  --text-secondary: #6c757d;
+  --accent-color: #212529;
+  /* Dark accent for light mode */
+  --border-color: #dee2e6;
+  --input-bg: #ffffff;
+  --header-bg: rgba(248, 249, 250, 0.95);
+  --footer-bg: #212529;
+  --footer-text: #f8f9fa;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  --primary-btn-bg: #212529;
+  --primary-btn-text: #ffffff;
+}
+
+body.dark-theme {
+  /* Dark Mode */
+  --bg-color: #121212;
+  --surface-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent-color: #ffffff;
+  /* Light accent for dark mode */
+  --border-color: #333333;
+  --input-bg: #2d2d2d;
+  --header-bg: rgba(18, 18, 18, 0.95);
+  --footer-bg: #000000;
+  --footer-text: #e0e0e0;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+  --primary-btn-bg: #e0e0e0;
+  --primary-btn-text: #121212;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Common utility classes if needed */
+.btn {
+  transition: all 0.2s ease;
+}
