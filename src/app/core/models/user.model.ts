@@ -6,7 +6,8 @@ export interface SocialLinks {
     [key: string]: string | undefined;
 }
 
-export interface IUserResponse {
+
+export interface IUser {
     _id: string;
     name: string;
     age: number;
@@ -21,4 +22,9 @@ export interface IUserResponse {
     socialLinks?: SocialLinks;
     createdAt: string;
     updatedAt: string;
+}
+
+export interface IUserResponse {
+    ok: boolean;
+    user: IUser;
 }

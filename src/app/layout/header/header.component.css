@@ -1,30 +1,3 @@
-import { Component, HostListener, signal, inject, Renderer2, Inject, DOCUMENT } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
-    <header [class.scrolled]="isScrolled()">
-      <nav>
-        <div class="logo">Musa</div>
-        <ul class="nav-links">
-          <li><a (click)="scrollTo('about-me')">About</a></li>
-          <li><a (click)="scrollTo('projects')">Projects</a></li>
-          <li><a (click)="scrollTo('skills')">Skills</a></li>
-          <li><a (click)="scrollTo('contact')">Contact</a></li>
-          <li>
-            <button class="theme-btn" (click)="toggleTheme()" aria-label="Toggle Theme">
-              <span *ngIf="isDark()">☀️</span>
-              <span *ngIf="!isDark()">🌙</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  `,
-  styles: [`
     header {
       position: fixed;
       top: 0;
@@ -99,32 +72,3 @@ import { CommonModule } from '@angular/common';
     .theme-btn:hover {
       transform: scale(1.1);
     }
-  `]
-})
-export class HeaderComponent {
-  isScrolled = signal(false);
-  isDark = signal(false);
-
-  private document = inject(DOCUMENT);
-
-  toggleTheme() {
-    this.isDark.update(v => !v);
-    if (this.isDark()) {
-      this.document.body.classList.add('dark-theme');
-    } else {
-      this.document.body.classList.remove('dark-theme');
-    }
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled.set(window.scrollY > 50);
-  }
-
-  scrollTo(elementId: string) {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-}

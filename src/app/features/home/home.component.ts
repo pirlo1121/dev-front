@@ -1,7 +1,7 @@
 import { Component, ElementRef, AfterViewInit, ViewChildren, QueryList, Renderer2, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '@layout/header/header.component';
+import { FooterComponent } from '@layout/footer/footer.component';
 import { AboutMeComponent } from '../about-me/about-me.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { SkillsComponent } from '../skills/skills.component';
@@ -11,50 +11,8 @@ import { ContactComponent } from '../contact/contact.component';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, HeaderComponent, FooterComponent, AboutMeComponent, ProjectsComponent, SkillsComponent, ContactComponent],
-  template: `
-    <app-header></app-header>
-    
-    <main class="content-container">
-      <section id="about-me" class="scroll-section reveal">
-        <app-about-me></app-about-me>
-      </section>
-      
-      <section id="projects" class="scroll-section reveal">
-        <app-projects></app-projects>
-      </section>
-      
-      <section id="skills" class="scroll-section reveal">
-        <app-skills></app-skills>
-      </section>
-      
-      <section id="contact" class="scroll-section reveal">
-        <app-contact></app-contact>
-      </section>
-    </main>
-
-    <app-footer></app-footer>
-  `,
-  styles: [`
-    .content-container {
-      padding-top: 80px; /* Space for fixed header */
-      min-height: 100vh;
-      /* overflow-x: hidden; Removed to let body handle it */
-    }
-    .scroll-section {
-      min-height: 90vh; /* Allow some overlap or spacing */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 0;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  `]
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
 export class HomeComponent implements AfterViewInit {
   @ViewChildren('reveal', { read: ElementRef }) sections!: QueryList<ElementRef>;

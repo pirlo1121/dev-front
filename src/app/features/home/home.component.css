@@ -1,0 +1,23 @@
+    .content-container {
+        padding-top: 80px;
+        /* Space for fixed header */
+        min-height: 100vh;
+        /* overflow-x: hidden; Removed to let body handle it */
+    }
+
+    .scroll-section {
+        min-height: 90vh;
+        /* Allow some overlap or spacing */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem 0;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease-out;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }

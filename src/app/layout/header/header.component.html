@@ -1,0 +1,17 @@
+    <header [class.scrolled]="isScrolled()">
+      <nav>
+        <div class="logo">Musa</div>
+        <ul class="nav-links">
+          <li><a (click)="scrollTo('about-me')">About</a></li>
+          <li><a (click)="scrollTo('projects')">Projects</a></li>
+          <li><a (click)="scrollTo('skills')">Skills</a></li>
+          <li><a (click)="scrollTo('contact')">Contact</a></li>
+          <li>
+            <button class="theme-btn" (click)="toggleTheme()" aria-label="Toggle Theme">
+              <span *ngIf="isDark()">☀️</span>
+              <span *ngIf="!isDark()">🌙</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
