@@ -1,9 +1,4 @@
 :root {
-  /* =========================================
-     GLOBAL VARIABLES - LIGHT MODE (DEFAULT)
-     Theme: Human Knowledge Lives Here
-     Target: Wisdom, Calm, History, Paper, Legibility
-     ========================================= */
 
   /* Palette - Warm / Paper / Ink */
   --bg-primary: #F9F8F4;
@@ -60,11 +55,6 @@
 }
 
 body.dark-theme {
-  /* =========================================
-     GLOBAL VARIABLES - DARK MODE
-     Theme: Observing the Universe
-     Target: Awe, Silence, Depth, Void
-     ========================================= */
 
   /* Palette - Deep Space */
   --bg-primary: #05070a;
@@ -124,12 +114,6 @@ body {
   position: relative;
 }
 
-/* =========================================
-   LIGHT MODE: THE KNOWLEDGE / PAPER TEXTURE
-   ========================================= */
-/* =========================================
-   LIGHT MODE: THE KNOWLEDGE / PAPER TEXTURE
-   ========================================= */
 body::before {
   content: "";
   position: fixed;
@@ -143,8 +127,8 @@ body::before {
   /* Increased visibility */
   /* Subtle grain + Manuscript Grid Lines */
   background-image:
-    linear-gradient(rgba(44, 36, 32, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(44, 36, 32, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(44, 36, 32, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 36, 32, 0.06) 1px, transparent 1px),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   background-size: 40px 40px, 40px 40px, auto;
   /* Grid size */
@@ -156,11 +140,6 @@ body.dark-theme::before {
   opacity: 0;
 }
 
-/* =========================================
-   DARK MODE: OBSERVING THE UNIVERSE
-   ========================================= */
-
-/* The Starfield Container */
 body.dark-theme::after {
   content: "";
   position: fixed;
@@ -411,9 +390,7 @@ body.dark-theme .starfield {
   }
 }
 
-/* =========================================
-   UTILITIES
-   ========================================= */
+
 .text-glow {
   text-shadow: 0 0 1px transparent;
   transition: text-shadow 0.3s;

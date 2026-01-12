@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   isScrolled = signal(false);
   isDark = signal(false);
+  isMenuOpen = signal(false);
 
   private document = inject(DOCUMENT);
 
@@ -23,6 +24,14 @@ export class HeaderComponent {
     }
   }
 
+  toggleMenu() {
+    this.isMenuOpen.update(v => !v);
+  }
+
+  closeMenu() {
+    this.isMenuOpen.set(false);
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled.set(window.scrollY > 50);
@@ -32,6 +41,7 @@ export class HeaderComponent {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      this.closeMenu(); // Close menu after navigation
     }
   }
 }
