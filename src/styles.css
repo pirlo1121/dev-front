@@ -1,50 +1,459 @@
 :root {
-  /* Light Mode */
-  --bg-color: #f8f9fa;
-  --surface-bg: #ffffff;
-  --text-color: #212529;
-  --text-secondary: #6c757d;
-  --accent-color: #212529;
-  /* Dark accent for light mode */
-  --border-color: #dee2e6;
-  --input-bg: #ffffff;
-  --header-bg: rgba(248, 249, 250, 0.95);
-  --footer-bg: #212529;
-  --footer-text: #f8f9fa;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  /* =========================================
+     GLOBAL VARIABLES - LIGHT MODE (DEFAULT)
+     Theme: Human Knowledge Lives Here
+     Target: Wisdom, Calm, History, Paper, Legibility
+     ========================================= */
 
-  --primary-btn-bg: #212529;
-  --primary-btn-text: #ffffff;
+  /* Palette - Warm / Paper / Ink */
+  --bg-primary: #F9F8F4;
+  /* Warm parchment white */
+  --bg-secondary: #EBEAE4;
+  /* Slightly darker paper for cards/sections */
+  --surface-bg: #FFFFFF;
+  /* Clean page tint */
+
+  --text-primary: #2C2420;
+  /* Deep ink - almost black but warm */
+  --text-secondary: #594D46;
+  /* Aged ink gray-brown */
+  --text-tertiary: #8C7F76;
+
+  --accent-primary: #2C2420;
+  /* Ink color as accent */
+  --accent-secondary: #8B4513;
+  /* SaddleBrown/Leather hint for specialized accents if needed, or keeping it subtle */
+  --accent-glow: rgba(44, 36, 32, 0.05);
+  /* Very subtle shadow */
+
+  --border-color: #D9D2C5;
+  /* Paper edge */
+
+  /* UI Elements */
+  --input-bg: #FFFFFF;
+  --header-bg: rgba(249, 248, 244, 0.95);
+  --footer-bg: #EBEAE4;
+  --footer-text: #2C2420;
+
+  /* Shadows - Minimalist and flat/soft */
+  --card-shadow: 0 2px 4px rgba(44, 36, 32, 0.05);
+  --hover-shadow: 0 8px 16px rgba(44, 36, 32, 0.08);
+
+  /* Typography */
+  --font-display: 'Inter', 'Georgia', serif;
+  /* Suggesting a serif blend for that "Knowledge" feel? Sticking to Inter as base but tuning weights */
+  --font-body: 'Inter', system-ui, sans-serif;
+  --line-height-base: 1.7;
+  /* Generous reading spacing */
+
+  /* Legacy Mappings */
+  --bg-color: var(--bg-primary);
+  /* --surface-bg mapped above */
+  --text-color: var(--text-primary);
+  --accent-color: var(--accent-primary);
+  --primary-btn-bg: var(--text-primary);
+  --primary-btn-text: #FFFFFF;
+
+  --transition-speed: 0.8s;
+  /* Slower, more deliberate transition */
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.dark-theme {
-  /* Dark Mode */
-  --bg-color: #121212;
-  --surface-bg: #1e1e1e;
-  --text-color: #e0e0e0;
-  --text-secondary: #a0a0a0;
-  --accent-color: #ffffff;
-  /* Light accent for dark mode */
-  --border-color: #333333;
-  --input-bg: #2d2d2d;
-  --header-bg: rgba(18, 18, 18, 0.95);
-  --footer-bg: #000000;
-  --footer-text: #e0e0e0;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* =========================================
+     GLOBAL VARIABLES - DARK MODE
+     Theme: Observing the Universe
+     Target: Awe, Silence, Depth, Void
+     ========================================= */
 
-  --primary-btn-bg: #e0e0e0;
-  --primary-btn-text: #121212;
+  /* Palette - Deep Space */
+  --bg-primary: #05070a;
+  /* Almost absolute black with a hint of blue */
+  --bg-secondary: #0b0e14;
+  /* Deep void */
+  --surface-bg: rgba(20, 25, 35, 0.6);
+  /* Glassy void matter */
+
+  --text-primary: #EAEAEA;
+  /* Starlight white - avoid #FFF */
+  --text-secondary: #A0AAB5;
+  /* Nebula dust gray */
+  --text-tertiary: #5C6773;
+
+  --accent-primary: #A78BFA;
+  /* Distant quasar violet */
+  --accent-secondary: #60A5FA;
+  /* Blue giant star */
+  --accent-glow: rgba(167, 139, 250, 0.4);
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  /* Faint starlight border */
+
+  /* UI Elements */
+  --input-bg: rgba(15, 20, 30, 0.8);
+  --header-bg: rgba(5, 7, 10, 0.85);
+  /* Glassy header */
+  --footer-bg: #020203;
+  --footer-text: #8899A6;
+
+  /* Shadows - Glowing */
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --hover-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(167, 139, 250, 0.15);
+
+  /* Legacy Mappings */
+  --bg-color: var(--bg-primary);
+  --text-color: var(--text-primary);
+  --accent-color: var(--accent-primary);
+  --primary-btn-bg: var(--text-primary);
+  /* White/Light button in dark mode for high contrast? Or accent? Let's use text-primary (Bright) */
+  --primary-btn-text: #05070a;
 }
 
+/* Base Reset & Typography */
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-color);
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  line-height: var(--line-height-base);
+  transition: background-color var(--transition-speed) var(--transition-ease),
+    color var(--transition-speed) var(--transition-ease),
+    background-image var(--transition-speed) var(--transition-ease);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
 }
 
-/* Common utility classes if needed */
+/* =========================================
+   LIGHT MODE: THE KNOWLEDGE / PAPER TEXTURE
+   ========================================= */
+/* =========================================
+   LIGHT MODE: THE KNOWLEDGE / PAPER TEXTURE
+   ========================================= */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.6;
+  /* Increased visibility */
+  /* Subtle grain + Manuscript Grid Lines */
+  background-image:
+    linear-gradient(rgba(44, 36, 32, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 36, 32, 0.03) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 40px 40px, 40px 40px, auto;
+  /* Grid size */
+  transition: opacity var(--transition-speed);
+}
+
+/* Hide texture/grid in dark mode, move to stars */
+body.dark-theme::before {
+  opacity: 0;
+}
+
+/* =========================================
+   DARK MODE: OBSERVING THE UNIVERSE
+   ========================================= */
+
+/* The Starfield Container */
+body.dark-theme::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  /* Complex Space Gradient */
+  background:
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(30, 58, 138, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+  transition: opacity var(--transition-speed);
+  animation: universe-pulse 20s ease-in-out infinite alternate;
+}
+
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-speed);
+}
+
+body.dark-theme .starfield {
+  opacity: 1;
+}
+
+/* Stars - Intensified */
+.star-layer-1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* Brighter small stars */
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 10%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 20% 80%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 30% 30%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 40% 70%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 60% 20%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 70% 90%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 80% 40%, #FFF, transparent),
+    radial-gradient(1.5px 1.5px at 90% 10%, #FFF, transparent);
+  background-size: 400px 400px;
+  opacity: 0.9;
+  animation: drift-slow 80s linear infinite;
+}
+
+.star-layer-2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* Brighter Blue stars */
+  background-image:
+    radial-gradient(2px 2px at 15% 15%, #E0F2FE, transparent),
+    radial-gradient(2px 2px at 55% 55%, #E0F2FE, transparent),
+    radial-gradient(2px 2px at 85% 85%, #E0F2FE, transparent);
+  background-size: 600px 600px;
+  opacity: 0.8;
+  animation: drift-mid 120s linear infinite reverse;
+}
+
+.star-layer-3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image:
+    radial-gradient(3px 3px at 50% 20%, #FDF4FF, transparent),
+    radial-gradient(3px 3px at 25% 65%, #A78BFA, transparent);
+  background-size: 800px 800px;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #fff);
+  /* Glow effect */
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+/* Comet Animations - Dual */
+.comet-primary {
+  position: absolute;
+  width: 150px;
+  height: 2px;
+  /* Blueish Tail */
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.8) 80%, #E0F2FE);
+  border-radius: 50%;
+  opacity: 0;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
+  animation: comet-pass-1 18s linear infinite;
+  animation-delay: 2s;
+  top: 0;
+  left: 0;
+  /* Base positioning */
+}
+
+/* Head of Comet 1 */
+.comet-primary::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background: #E0F2FE;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 4px rgba(59, 130, 246, 0.8);
+}
+
+.comet-secondary {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  /* Purple/Pink Tail */
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0), rgba(167, 139, 250, 0.9) 80%, #F5F3FF);
+  border-radius: 50%;
+  opacity: 0;
+  transform: rotate(25deg);
+  /* Different angle */
+  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.8));
+  animation: comet-pass-2 25s linear infinite;
+  animation-delay: 10s;
+  /* Offset timing */
+  top: 0;
+  left: 0;
+}
+
+/* Head of Comet 2 */
+.comet-secondary::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #F5F3FF;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 3px rgba(167, 139, 250, 0.8);
+}
+
+/* Trajectory 1: Top Left to Bottom Right */
+@keyframes comet-pass-1 {
+  0% {
+    left: -20%;
+    top: -10%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 120%;
+    top: 80%;
+    opacity: 0;
+  }
+}
+
+/* Trajectory 2: Bottom Left to Top Right (Simulating depth/randomness) */
+@keyframes comet-pass-2 {
+  0% {
+    left: -10%;
+    top: 60%;
+    opacity: 0;
+    transform: rotate(25deg) scale(0.8);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 110%;
+    top: 10%;
+    opacity: 0;
+    transform: rotate(25deg) scale(0.8);
+  }
+}
+
+/* Animations */
+@keyframes drift-slow {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-400px);
+  }
+}
+
+@keyframes drift-mid {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-600px);
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes universe-pulse {
+  0% {
+    filter: brightness(1);
+  }
+
+  100% {
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes float-hero {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+.text-glow {
+  text-shadow: 0 0 1px transparent;
+  transition: text-shadow 0.3s;
+}
+
+body.dark-theme .text-glow {
+  text-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
+}
+
+.glass-panel {
+  background: var(--surface-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
 .btn {
-  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.75rem 1.5rem;
+  /* Larger touch area */
+  font-size: 1.05rem;
+  /* Slightly larger text */
 }

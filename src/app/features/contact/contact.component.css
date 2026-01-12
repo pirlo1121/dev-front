@@ -1,28 +1,49 @@
     .contact-container {
         padding: 4rem 2rem;
         min-height: 100vh;
-        background: var(--bg-color);
+        background: transparent;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.3s;
+        position: relative;
+        z-index: 1;
     }
 
     h2 {
         font-size: 2.5rem;
         margin-bottom: 2rem;
         color: var(--text-color);
+        transition: text-shadow 0.3s;
+    }
+
+    /* Apply global text glow in dark mode via component style or global class */
+    :host-context(body.dark-theme) h2 {
+        text-shadow: 0 0 15px var(--accent-glow);
     }
 
     .contact-form {
         width: 100%;
         max-width: 500px;
         background: var(--surface-bg);
-        padding: 2rem;
-        border-radius: 8px;
+        padding: 2.5rem;
+        border-radius: 4px;
+        /* More paper-like in light mode */
         box-shadow: var(--card-shadow);
         border: 1px solid var(--border-color);
+
+        /* Glass effect base properties */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease;
+    }
+
+    :host-context(body.dark-theme) .contact-form {
+        border-radius: 12px;
+        /* Smoother in space */
+        animation: float-hero 8s ease-in-out infinite;
+        /* Floating in space */
     }
 
     .form-group {
@@ -33,28 +54,38 @@
         display: block;
         margin-bottom: 0.5rem;
         font-weight: 500;
-        font-family: 'Inter', sans-serif;
-        color: var(--text-color);
+        font-family: var(--font-body);
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
     }
 
     input,
     textarea {
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.875rem;
         border: 1px solid var(--border-color);
-        border-radius: 4px;
+        border-radius: 2px;
+        /* Sharp for paper */
         font-size: 1rem;
         font-family: inherit;
         box-sizing: border-box;
         background: var(--input-bg);
         color: var(--text-color);
-        transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+        transition: all 0.3s ease;
+    }
+
+    :host-context(body.dark-theme) input,
+    :host-context(body.dark-theme) textarea {
+        border-radius: 6px;
+        /* Soft in space */
     }
 
     input:focus,
     textarea:focus {
         outline: none;
-        border-color: var(--accent-color);
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 2px var(--accent-glow);
     }
 
     button {
@@ -62,11 +93,24 @@
         padding: 1rem;
         background: var(--primary-btn-bg);
         color: var(--primary-btn-text);
-        border: none;
-        border-radius: 4px;
+        border: 1px solid transparent;
+        border-radius: 2px;
         font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
-        transition: opacity 0.3s;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    :host-context(body.dark-theme) button {
+        border-radius: 6px;
+        text-transform: none;
+        /* Modern/Clean in space */
+        letter-spacing: normal;
+        background: var(--accent-primary);
+        /* Violet in space */
+        color: #fff;
     }
 
     button:hover:not(:disabled) {
