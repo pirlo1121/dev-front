@@ -1,6 +1,7 @@
     .skills-container {
-        padding: 4rem 2rem;
-        min-height: 100vh;
+        padding: 0rem 2rem;
+        min-height: 400px;
+        /* min-height: 100vh; */
         background: transparent;
         color: var(--text-color);
         display: flex;
@@ -14,7 +15,7 @@
 
     h2 {
         font-size: 2.5rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         text-align: center;
         transition: text-shadow 0.3s;
     }

@@ -4,7 +4,8 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
-        padding: 2rem;
+        padding: 0rem;
+        margin: 0;
         background-color: transparent;
         text-align: center;
         transition: background-color 0.3s;
