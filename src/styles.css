@@ -244,53 +244,61 @@ body.dark-theme .starfield {
 }
 
 /* Comet Animations - Dual */
+/* Comet Animations - Dual */
 .comet-primary {
   position: absolute;
-  width: 150px;
-  height: 2px;
-  /* Blueish Tail */
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.8) 80%, #E0F2FE);
-  border-radius: 50%;
+  width: 200px;
+  /* Longer tail */
+  height: 3px;
+  /* Tail (Left/Transparent) -> Head (Right/Solid) */
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0) 0%, rgba(130, 180, 255, 0.6) 80%, #FFF 100%);
+  border-radius: 50% 0 0 50%;
   opacity: 0;
-  transform: rotate(-45deg);
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
-  animation: comet-pass-1 18s linear infinite;
+  /* Rotate 45deg to point down-right. 
+     Gradient goes Left->Right. 
+     Head is at Right. 
+     Move matches direction */
+  transform: rotate(45deg);
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.8));
+  animation: comet-pass-1 12s ease-in infinite;
   animation-delay: 2s;
   top: 0;
   left: 0;
-  /* Base positioning */
+  z-index: -1;
 }
 
-/* Head of Comet 1 */
+/* Head of Comet 1 (At the very end of the line) */
 .comet-primary::after {
   content: '';
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 5px;
-  height: 5px;
-  background: #E0F2FE;
+  width: 6px;
+  height: 6px;
+  background: #FFF;
   border-radius: 50%;
-  box-shadow: 0 0 15px 4px rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.9);
 }
 
 .comet-secondary {
   position: absolute;
-  width: 120px;
+  width: 160px;
   height: 2px;
-  /* Purple/Pink Tail */
-  background: linear-gradient(90deg, rgba(167, 139, 250, 0), rgba(167, 139, 250, 0.9) 80%, #F5F3FF);
-  border-radius: 50%;
+  /* Tail (Left) -> Head (Right) */
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0) 0%, rgba(192, 132, 252, 0.6) 80%, #FFF 100%);
+  border-radius: 50% 0 0 50%;
   opacity: 0;
-  transform: rotate(25deg);
-  /* Different angle */
-  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.8));
-  animation: comet-pass-2 25s linear infinite;
-  animation-delay: 10s;
-  /* Offset timing */
+  /* Moving Bottom-Left to Top-Right means roughly -45deg trajectory visually? 
+     No, BL to TR is -45deg (Counter Clockwise from horizontal right).
+  */
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.8));
+  animation: comet-pass-2 20s ease-in infinite;
+  animation-delay: 8s;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 /* Head of Comet 2 */
@@ -300,17 +308,17 @@ body.dark-theme .starfield {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  background: #F5F3FF;
+  width: 5px;
+  height: 5px;
+  background: #FFF;
   border-radius: 50%;
-  box-shadow: 0 0 15px 3px rgba(167, 139, 250, 0.8);
+  box-shadow: 0 0 15px 4px rgba(167, 139, 250, 0.9);
 }
 
-/* Trajectory 1: Top Left to Bottom Right */
+/* Trajectory 1: Top-Left to Bottom-Right */
 @keyframes comet-pass-1 {
   0% {
-    left: -20%;
+    left: -10%;
     top: -10%;
     opacity: 0;
   }
@@ -319,39 +327,30 @@ body.dark-theme .starfield {
     opacity: 1;
   }
 
-  80% {
-    opacity: 1;
-  }
-
+  /* Speed up as it crosses */
   100% {
-    left: 120%;
-    top: 80%;
+    left: 110%;
+    top: 110%;
     opacity: 0;
   }
 }
 
-/* Trajectory 2: Bottom Left to Top Right (Simulating depth/randomness) */
+/* Trajectory 2: Bottom-Left to Top-Right */
 @keyframes comet-pass-2 {
   0% {
     left: -10%;
-    top: 60%;
+    top: 110%;
     opacity: 0;
-    transform: rotate(25deg) scale(0.8);
   }
 
   10% {
     opacity: 1;
   }
 
-  80% {
-    opacity: 1;
-  }
-
   100% {
     left: 110%;
-    top: 10%;
+    top: -10%;
     opacity: 0;
-    transform: rotate(25deg) scale(0.8);
   }
 }
 
@@ -404,7 +403,7 @@ body.dark-theme .starfield {
   }
 
   50% {
-    transform: translateY(-20px) rotate(1deg);
+    transform: translateY(-20px);
   }
 
   100% {
