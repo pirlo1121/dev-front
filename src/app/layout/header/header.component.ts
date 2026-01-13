@@ -1,4 +1,4 @@
-import { Component, HostListener, signal, inject, Renderer2, Inject, DOCUMENT } from '@angular/core';
+import { Component, HostListener, signal, inject, Renderer2, Inject, DOCUMENT, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,6 +14,7 @@ export class HeaderComponent {
   isMenuOpen = signal(false);
 
   private document = inject(DOCUMENT);
+  private elementRef = inject(ElementRef);
 
   constructor() {
     // Cargar tema guardado en localStorage o usar dark mode por defecto
@@ -61,6 +62,23 @@ export class HeaderComponent {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled.set(window.scrollY > 50);
+  }
+
+  // Close menu when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside && this.isMenuOpen()) {
+      this.closeMenu();
+    }
+  }
+
+  // Close menu with Escape key
+  @HostListener('document:keydown.escape', [])
+  onEscapeKey() {
+    if (this.isMenuOpen()) {
+      this.closeMenu();
+    }
   }
 
   scrollTo(elementId: string) {

@@ -1,13 +1,13 @@
 <header [class.scrolled]="isScrolled()">
   <nav>
-    <div class="logo">Musa</div>
-
-    <!-- Hamburger Menu Button (Mobile Only) -->
+    <!-- Hamburger Menu Button (Mobile Only) - Now on LEFT -->
     <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen()" aria-label="Toggle Menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
+
+    <div class="logo">Musa</div>
 
     <ul class="nav-links" [class.active]="isMenuOpen()">
       <li><a (click)="scrollTo('about-me')">About</a></li>
