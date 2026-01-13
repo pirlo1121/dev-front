@@ -10,13 +10,39 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   isScrolled = signal(false);
-  isDark = signal(false);
+  isDark = signal(true); // Dark mode por defecto
   isMenuOpen = signal(false);
 
   private document = inject(DOCUMENT);
 
+  constructor() {
+    // Cargar tema guardado en localStorage o usar dark mode por defecto
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      this.isDark.set(savedTheme === 'dark');
+    } else {
+      // Si no hay tema guardado, establecer dark mode por defecto
+      this.isDark.set(true);
+      localStorage.setItem('theme', 'dark');
+    }
+
+    // Aplicar el tema al body
+    if (this.isDark()) {
+      this.document.body.classList.add('dark-theme');
+    } else {
+      this.document.body.classList.remove('dark-theme');
+    }
+  }
+
   toggleTheme() {
     this.isDark.update(v => !v);
+    const newTheme = this.isDark() ? 'dark' : 'light';
+
+    // Guardar en localStorage
+    localStorage.setItem('theme', newTheme);
+
+    // Aplicar clase al body
     if (this.isDark()) {
       this.document.body.classList.add('dark-theme');
     } else {
