@@ -124,3 +124,52 @@
         color: #fff;
         box-shadow: 0 0 15px var(--accent-glow);
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .about-me-container {
+            padding: 0 1.5rem;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+        }
+
+        .bio {
+            font-size: 1rem;
+            max-width: 100%;
+        }
+
+        .social-links {
+            flex-wrap: wrap;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-me-container {
+            padding: 0 1rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        .social-links a {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+        }
+    }

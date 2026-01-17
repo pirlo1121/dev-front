@@ -80,3 +80,38 @@
         box-shadow: 0 0 15px var(--accent-glow);
         transform: scale(1.1);
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .skills-container {
+            padding: 0 1.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        .skills-grid {
+            gap: 1rem;
+        }
+
+        .skill-badge {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .skills-container {
+            padding: 0 1rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        .skill-badge {
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+        }
+    }
