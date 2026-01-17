@@ -11,8 +11,6 @@
         transition: background-color 0.3s;
         position: relative;
         z-index: 1;
-
-        /* Fade-in animation */
         animation: fadeInUp 0.8s ease-out forwards;
         opacity: 0;
     }
@@ -29,9 +27,14 @@
         }
     }
 
+    /* Profile Image Wrapper for positioning celestial toggle */
+    .profile-image-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
     .profile-img {
         width: 250px;
-        /* Increased size */
         height: 250px;
         border-radius: 50%;
         object-fit: cover;
@@ -42,21 +45,189 @@
     }
 
     :host-context(body.dark-theme) .profile-img {
-        /* Moon Effect */
-        box-shadow:
-
-
-
-
-            /* Atmosphere glow */
-            0 0 120px #a78bfade;
-
-        /* Surface glow */
+        box-shadow: 0 0 120px #a78bfade;
         filter: grayscale(0.2) contrast(1.1);
         border: 2px solid rgba(255, 255, 255, 0.602);
         animation: float-hero 8s ease-in-out infinite;
     }
 
+    /* =========================================
+       Celestial Theme Toggle (Sun/Moon)
+       ========================================= */
+    .celestial-toggle {
+        position: absolute;
+        top: -35px;
+        right: -35px;
+        width: 85px;
+        height: 85px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        z-index: 10;
+        transition: transform 0.3s ease;
+    }
+
+    .celestial-toggle:hover {
+        transform: scale(1.15);
+    }
+
+    /* ---- Sun (Realistic with Corona) ---- */
+    .sun {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .sun-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 55px;
+        height: 55px;
+        background: radial-gradient(circle at 30% 30%,
+                #fffbe6 0%,
+                #fff176 20%,
+                #ffd700 40%,
+                #ffb300 60%,
+                #ff8c00 80%,
+                #ff5722 100%);
+        border-radius: 50%;
+        box-shadow:
+            0 0 25px #ffd700,
+            0 0 50px #ff8c00,
+            0 0 80px #ff5722,
+            0 0 120px rgba(255, 87, 34, 0.4),
+            inset -6px -6px 12px rgba(255, 69, 0, 0.5),
+            inset 3px 3px 8px rgba(255, 255, 200, 0.3);
+        animation: sun-pulse 3s ease-in-out infinite;
+    }
+
+    /* Sun Corona/Rays */
+    .sun-rays {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background:
+            radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, rgba(255, 140, 0, 0.3) 40%, transparent 70%);
+        border-radius: 50%;
+        animation: sun-glow 2s ease-in-out infinite alternate;
+    }
+
+    /* Additional Sun Detail - Solar Flares */
+    .sun::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: transparent;
+        box-shadow:
+            12px 0 8px -5px rgba(255, 200, 0, 0.5),
+            -12px 0 8px -5px rgba(255, 200, 0, 0.5),
+            0 12px 8px -5px rgba(255, 200, 0, 0.5),
+            0 -12px 8px -5px rgba(255, 200, 0, 0.5);
+        animation: sun-flare 4s ease-in-out infinite;
+    }
+
+    @keyframes sun-flare {
+
+        0%,
+        100% {
+            opacity: 0.6;
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        50% {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    }
+
+    @keyframes sun-pulse {
+
+        0%,
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        50% {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+    }
+
+    @keyframes sun-glow {
+        0% {
+            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    }
+
+    /* ---- Moon (Realistic) ---- */
+    .moon {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .moon-surface {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 45px;
+        height: 45px;
+        background: radial-gradient(circle at 35% 35%, #f5f5f5, #d4d4d4 50%, #a0a0a0 100%);
+        border-radius: 50%;
+        box-shadow:
+            inset -8px -6px 15px rgba(80, 80, 80, 0.6),
+            0 0 15px rgba(200, 200, 200, 0.5),
+            0 0 30px rgba(150, 150, 150, 0.3);
+    }
+
+    /* Moon Craters */
+    .moon-crater {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle at 40% 40%, #b0b0b0, #888 70%);
+        box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .crater-1 {
+        width: 10px;
+        height: 10px;
+        top: 18px;
+        left: 22px;
+    }
+
+    .crater-2 {
+        width: 7px;
+        height: 7px;
+        top: 30px;
+        left: 32px;
+    }
+
+    .crater-3 {
+        width: 5px;
+        height: 5px;
+        top: 25px;
+        left: 18px;
+    }
+
+    /* =========================================
+       Text Styles
+       ========================================= */
     h2 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
@@ -86,9 +257,11 @@
     :host-context(body.dark-theme) .bio {
         color: var(--text-primary);
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        /* Better readability on stars */
     }
 
+    /* =========================================
+       Social Links
+       ========================================= */
     .social-links {
         display: flex;
         gap: 1rem;
@@ -125,7 +298,9 @@
         box-shadow: 0 0 15px var(--accent-glow);
     }
 
-    /* Mobile Responsiveness */
+    /* =========================================
+       Mobile Responsiveness
+       ========================================= */
     @media (max-width: 768px) {
         .about-me-container {
             padding: 0 1.5rem;
@@ -134,6 +309,28 @@
         .profile-img {
             width: 180px;
             height: 180px;
+        }
+
+        .celestial-toggle {
+            width: 50px;
+            height: 50px;
+            top: -10px;
+            right: -10px;
+        }
+
+        .sun-core {
+            width: 32px;
+            height: 32px;
+        }
+
+        .sun-rays {
+            width: 45px;
+            height: 45px;
+        }
+
+        .moon-surface {
+            width: 36px;
+            height: 36px;
         }
 
         h2 {
@@ -162,6 +359,13 @@
         .profile-img {
             width: 150px;
             height: 150px;
+        }
+
+        .celestial-toggle {
+            width: 45px;
+            height: 45px;
+            top: -8px;
+            right: -8px;
         }
 
         h2 {

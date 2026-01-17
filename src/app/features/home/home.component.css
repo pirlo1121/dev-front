@@ -1,13 +1,11 @@
     .content-container {
-        padding-top: 80px;
+        padding-top: 100px;
         /* Space for fixed header */
         min-height: 100vh;
-        /* overflow-x: hidden; Removed to let body handle it */
     }
 
     .scroll-section {
         min-height: 90vh;
-        /* Allow some overlap or spacing */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -22,10 +20,10 @@
         transform: translateY(0);
     }
 
-    /* Mobile Responsiveness */
     @media (max-width: 768px) {
         .content-container {
-            padding-top: 70px;
+            padding-top: 120px;
+            /* More space for 2-row header */
         }
 
         .scroll-section {
@@ -36,7 +34,7 @@
 
     @media (max-width: 480px) {
         .content-container {
-            padding-top: 65px;
+            padding-top: 110px;
         }
 
         .scroll-section {
