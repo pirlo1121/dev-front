@@ -14,7 +14,7 @@ export class SkillsComponent {
   skills = signal<string[]>([]);
 
   constructor() {
-    this.userService.getUser('69600dfbc55366ae7a0fd6a4').subscribe({
+    this.userService.getUser('696c287de69192f9b00097c6').subscribe({
       next: (resp) => {
         if (resp && resp.user.skills) {
           this.skills.set(resp.user.skills);

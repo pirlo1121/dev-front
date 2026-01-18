@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://code-musa.com/api'
+    apiUrl: 'https://api.code-musa.com/api'
 };

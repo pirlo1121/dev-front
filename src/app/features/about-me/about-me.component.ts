@@ -29,7 +29,7 @@ export class AboutMeComponent {
   }
 
   ngOnInit(): void {
-    this.userService.getUser('69600dfbc55366ae7a0fd6a4').subscribe({
+    this.userService.getUser('696c287de69192f9b00097c6').subscribe({
       next: (resp) => {
         this.user.set(resp.user);
         console.log(resp.user);
