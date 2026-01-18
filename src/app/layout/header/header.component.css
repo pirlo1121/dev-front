@@ -6,7 +6,7 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
-  padding: 1rem 2rem;
+  padding: 1rem 0rem;
   z-index: 1000;
   background: var(--bg-color, #0d1117);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -17,7 +17,6 @@ header.scrolled {
   /* background: rgba(13, 17, 23, 0.95); */
 
   backdrop-filter: blur(12px);
-  padding: 0.75rem 2rem;
 }
 
 header.hidden {
@@ -39,7 +38,7 @@ header.hidden {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -170,6 +169,34 @@ header.hidden {
 /* =========================================
    Mobile Responsiveness
    ========================================= */
+@media (max-width: 1400px) {
+  .navbar {
+    max-width: 100px;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .navbar {
+    max-width: 800px;
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .navbar {
+    max-width: 600px;
+  }
+
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    max-width: 400px;
+  }
+
+}
+
 @media (max-width: 768px) {
   header {
     padding: 0.8rem .5rem;
@@ -203,6 +230,7 @@ header.hidden {
     justify-content: space-between;
     gap: 0;
     padding-top: 0.5rem;
+    margin-right: 1.7rem;
     /* margin-top: 0.5rem; */
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
@@ -231,6 +259,7 @@ header.hidden {
 
   .logo {
     font-size: 0.9rem;
+    margin-left: 1rem;
   }
 
   .logo-icon {
