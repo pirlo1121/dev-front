@@ -248,10 +248,16 @@
 
     .bio {
         max-width: 600px;
+        width: 100%;
         margin-bottom: 2rem;
         line-height: var(--line-height-base, 1.6);
         color: var(--text-color);
         font-size: 1.1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 
     :host-context(body.dark-theme) .bio {
