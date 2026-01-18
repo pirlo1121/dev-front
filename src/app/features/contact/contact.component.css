@@ -164,8 +164,11 @@
 
         .contact-form {
             padding: 2rem;
+            max-width: 450px;
+
         }
     }
+
 
     @media (max-width: 480px) {
         .contact-container {
@@ -177,6 +180,7 @@
         }
 
         .contact-form {
+            max-width: 350px;
             padding: 1.5rem;
         }
 
@@ -189,5 +193,15 @@
         button {
             padding: 0.875rem;
             font-size: 0.95rem;
+        }
+    }
+
+
+    @media (max-width: 400px) {
+
+
+        .contact-form {
+            padding: 1rem;
+            max-width: 300px;
         }
     }
