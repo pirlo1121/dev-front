@@ -199,7 +199,7 @@ header.hidden {
 
 @media (max-width: 768px) {
   header {
-    padding: 0.8rem .5rem;
+    padding: 0.5rem .5rem;
   }
 
   header.scrolled {
@@ -246,7 +246,7 @@ header.hidden {
 
   .nav-links a {
     font-size: 0.85rem;
-    padding: 0.4rem;
+    /* padding: 0.4rem; */
     display: block;
   }
 }
