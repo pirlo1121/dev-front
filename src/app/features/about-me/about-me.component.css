@@ -306,10 +306,10 @@
             padding: 0 1.5rem;
         }
 
-        .profile-img {
+        /* .profile-img {
             width: 180px;
             height: 180px;
-        }
+        } */
 
         .celestial-toggle {
             width: 50px;
@@ -357,8 +357,8 @@
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
         }
 
         .celestial-toggle {
