@@ -6,7 +6,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.3s;
+        transition: background-color 0.15s ease-out;
         position: relative;
         z-index: 1;
 
@@ -31,7 +31,7 @@
         font-size: 2.5rem;
         margin-bottom: 2rem;
         color: var(--text-color);
-        transition: text-shadow 0.3s;
+        transition: text-shadow 0.15s ease-out, color 0.15s ease-out;
     }
 
     /* Apply global text glow in dark mode via component style or global class */
@@ -53,7 +53,7 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
 
-        transition: transform 0.5s ease-in-out, box-shadow 0.5s ease;
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
     }
 
     :host-context(body.dark-theme) .contact-form {
@@ -89,7 +89,7 @@
         box-sizing: border-box;
         background: var(--input-bg);
         color: var(--text-color);
-        transition: all 0.3s ease;
+        transition: border-color 0.15s ease-out, background-color 0.15s ease-out, color 0.15s ease-out;
     }
 
     :host-context(body.dark-theme) input,
@@ -115,7 +115,7 @@
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: background-color 0.15s ease-out, color 0.15s ease-out, box-shadow 0.15s ease-out;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }

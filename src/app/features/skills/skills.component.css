@@ -8,7 +8,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.3s, color 0.3s;
+        transition: background-color 0.15s ease-out, color 0.15s ease-out;
         position: relative;
         z-index: 1;
 
@@ -33,7 +33,7 @@
         font-size: 2.5rem;
         margin-bottom: 2rem;
         text-align: center;
-        transition: text-shadow 0.3s;
+        transition: text-shadow 0.15s ease-out, color 0.15s ease-out;
     }
 
     :host-context(body.dark-theme) h2 {
@@ -54,7 +54,7 @@
         border-radius: 2px;
         font-size: 1.1rem;
         border: 1px solid var(--border-color);
-        transition: all 0.3s ease;
+        transition: background-color 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out;
         cursor: default;
         color: var(--text-color);
         box-shadow: var(--card-shadow);

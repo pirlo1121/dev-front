@@ -3,7 +3,7 @@
         color: var(--footer-text);
         padding: 2rem;
         text-align: center;
-        transition: background-color 0.3s, color 0.3s;
+        transition: background-color 0.15s ease-out, color 0.15s ease-out;
     }
 
     .footer-content {
@@ -24,7 +24,7 @@
         color: var(--footer-text);
         opacity: 0.8;
         text-decoration: none;
-        transition: opacity 0.3s;
+        transition: opacity 0.15s ease-out;
     }
 
     .social-links a:hover {

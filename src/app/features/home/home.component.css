@@ -12,7 +12,8 @@
         padding: 4rem 0;
         opacity: 0;
         transform: translateY(50px);
-        transition: all 1s ease-out;
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        will-change: opacity, transform;
     }
 
     .reveal.active {
