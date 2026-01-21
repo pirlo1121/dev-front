@@ -27,7 +27,11 @@ export class ProjectsComponent {
     this.projectService.getProjects().subscribe({
       next: (resp) => {
         if (resp.ok) {
-          this.projects.set(resp.projects);
+          const processedProjects = resp.projects.map(p => ({
+            ...p,
+            stack: p.stack.flatMap(s => s.split(' '))
+          }));
+          this.projects.set(processedProjects);
         }
       },
       error: (err) => console.error('Error loading projects', err)
