@@ -1,0 +1,306 @@
+/* Modal Backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Container */
+.modal-container {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: var(--hover-shadow);
+    animation: slideUp 0.3s ease-out;
+}
+
+:host-context(body.dark-theme) .modal-container {
+    background: rgba(15, 20, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(167, 139, 250, 0.1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    transform: rotate(90deg);
+}
+
+:host-context(body.dark-theme) .close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+:host-context(body.dark-theme) .close-btn:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.5);
+}
+
+/* Modal Image */
+.modal-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 2rem;
+}
+
+h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+}
+
+:host-context(body.dark-theme) h2 {
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+}
+
+:host-context(body.dark-theme) .subtitle {
+    color: var(--accent-secondary);
+}
+
+.description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: var(--bg-secondary);
+    padding: 0.35rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease-out;
+}
+
+:host-context(body.dark-theme) .tag {
+    background: rgba(167, 139, 250, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+/* Links */
+.links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+
+.btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+}
+
+:host-context(body.dark-theme) .btn {
+    border-radius: 8px;
+    color: var(--accent-secondary);
+    border-color: rgba(96, 165, 250, 0.3);
+    background: rgba(96, 165, 250, 0.05);
+}
+
+:host-context(body.dark-theme) .btn:hover {
+    background: var(--accent-secondary);
+    color: #fff;
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--text-primary);
+}
+
+:host-context(body.dark-theme) .btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, #8b5cf6 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(167, 139, 250, 0.3);
+}
+
+:host-context(body.dark-theme) .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.6);
+}
+
+.btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Scrollbar */
+.modal-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .modal-backdrop {
+        padding: 0.5rem;
+    }
+
+    .modal-container {
+        max-height: 95vh;
+    }
+
+    .modal-image {
+        height: 200px;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .close-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-body {
+        padding: 1.25rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .links {
+        flex-direction: column;
+    }
+
+    .links .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

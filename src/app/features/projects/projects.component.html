@@ -7,10 +7,18 @@
             <img [src]="project.image || 'assets/project-placeholder.jpg'" [alt]="project.name">
             <div class="card-content">
                 <h3>{{ project.name }}</h3>
-                <p>{{ project.description }}</p>
+                <p class="subtitle">{{ project.subtitle }}</p>
                 <div class="tags">
                     <span *ngFor="let stack of project.stack" class="tag">{{ stack }}</span>
                 </div>
+                <button class="read-more" (click)="openModal(project)">
+                    Ver más
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </button>
                 <div class="links">
                     <a [href]="project.repository" target="_blank" class="btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -27,7 +35,7 @@
                             <polyline points="15 3 21 3 21 9" />
                             <line x1="10" y1="14" x2="21" y2="3" />
                         </svg>
-                        Live 
+                        Live
                     </a>
                 </div>
             </div>
@@ -44,3 +52,6 @@
     </div>
 
 </section>
+
+<app-project-modal [project]="selectedProject()" [isOpen]="isModalOpen()" (closeModal)="closeModal()">
+</app-project-modal>
