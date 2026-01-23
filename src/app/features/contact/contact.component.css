@@ -72,7 +72,8 @@
         margin-bottom: 0.5rem;
         font-weight: 500;
         font-family: var(--font-body);
-        color: var(--text-secondary);
+        color: var(--text-primary);
+        /* color: white; */
         font-size: 0.9rem;
         letter-spacing: 0.02em;
     }
@@ -89,6 +90,7 @@
         box-sizing: border-box;
         background: var(--input-bg);
         color: var(--text-color);
+
         transition: border-color 0.15s ease-out, background-color 0.15s ease-out, color 0.15s ease-out;
     }
 

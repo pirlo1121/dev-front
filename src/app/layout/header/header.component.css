@@ -93,7 +93,7 @@ header.hidden {
 
 .nav-links a {
   text-decoration: none;
-  color: rgba(230, 237, 243, 0.7);
+  color: rgb(230, 237, 243);
   font-weight: 500;
   font-size: 0.9rem;
   cursor: pointer;
@@ -110,12 +110,16 @@ header.hidden {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--text-color, #e6edf3);
+  /* background-color: var(--text-color, #e6edf3); */
+  background-color: var(--accent-primary);
+
   transition: width 0.15s ease-out;
 }
 
 .nav-links a:hover {
-  color: var(--text-color, #e6edf3);
+  /* color: var(--text-color, #e6edf3); */
+  color: var(--accent-primary);
+
 }
 
 .nav-links a:hover::after {
@@ -124,7 +128,7 @@ header.hidden {
 
 /* Light Mode Nav Links */
 :host-context(body:not(.dark-theme)) .nav-links a {
-  color: rgba(31, 35, 40, 0.6);
+  color: rgb(0, 0, 0);
 }
 
 :host-context(body:not(.dark-theme)) .nav-links a:hover {
@@ -132,7 +136,7 @@ header.hidden {
 }
 
 :host-context(body:not(.dark-theme)) .nav-links a::after {
-  background-color: #1f2328;
+  background-color: #000000;
 }
 
 /* =========================================
@@ -159,7 +163,7 @@ header.hidden {
 
 /* Light Mode Theme Button */
 :host-context(body:not(.dark-theme)) .theme-btn {
-  color: #1f2328;
+  color: #000000;
 }
 
 :host-context(body:not(.dark-theme)) .theme-btn:hover {
