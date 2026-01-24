@@ -1,5 +1,6 @@
 @if (isOpen && project) {
-<div class="modal-backdrop" (click)="onBackdropClick($event)">
+<div class="modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
+    aria-labelledby="modal-title">
     <div class="modal-container">
         <button class="close-btn" (click)="close()" aria-label="Cerrar modal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -15,7 +16,7 @@
             </div>
 
             <div class="modal-body">
-                <h2>{{ project.name }}</h2>
+                <h2 id="modal-title">{{ project.name }}</h2>
                 <p class="subtitle">{{ project.subtitle }}</p>
                 <p class="description">{{ project.description }}</p>
 

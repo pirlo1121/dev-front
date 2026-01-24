@@ -6,7 +6,7 @@
     </section>
 
     <section id="projects" class="scroll-section reveal">
-        <app-projects></app-projects>
+        <app-projects (openProject)="handleOpenProject($event)"></app-projects>
     </section>
 
     <section id="skills" class="scroll-section reveal">
@@ -19,3 +19,6 @@
 </main>
 
 <app-footer></app-footer>
+
+<app-project-modal [project]="selectedProject()" [isOpen]="isModalOpen()" (closeModal)="closeModal()">
+</app-project-modal>

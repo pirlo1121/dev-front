@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectService } from '@core/services/project.service';
 import { IProjectResponse } from '@core/models/project.model';
@@ -7,7 +7,7 @@ import { ProjectModalComponent } from './project-modal/project-modal.component';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ProjectModalComponent],
+  imports: [CommonModule],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
@@ -17,9 +17,7 @@ export class ProjectsComponent {
   currentPage = signal(1);
   itemsPerPage = 4;
 
-  // Modal state
-  selectedProject = signal<IProjectResponse | null>(null);
-  isModalOpen = signal(false);
+  @Output() openProject = new EventEmitter<IProjectResponse>();
 
   paginatedProjects = computed(() => {
     const startIndex = (this.currentPage() - 1) * this.itemsPerPage;
@@ -55,16 +53,8 @@ export class ProjectsComponent {
     }
   }
 
-  openModal(project: IProjectResponse) {
-    this.selectedProject.set(project);
-    this.isModalOpen.set(true);
-    document.body.style.overflow = 'hidden';
-  }
-
-  closeModal() {
-    this.isModalOpen.set(false);
-    this.selectedProject.set(null);
-    document.body.style.overflow = '';
+  handleOpenModal(project: IProjectResponse) {
+    this.openProject.emit(project);
   }
 }
 

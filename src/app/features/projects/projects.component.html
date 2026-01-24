@@ -11,7 +11,7 @@
                 <div class="tags">
                     <span *ngFor="let stack of project.stack" class="tag">{{ stack }}</span>
                 </div>
-                <button class="read-more" (click)="openModal(project)">
+                <button class="read-more" (click)="handleOpenModal(project)">
                     Ver más
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -52,6 +52,3 @@
     </div>
 
 </section>
-
-<app-project-modal [project]="selectedProject()" [isOpen]="isModalOpen()" (closeModal)="closeModal()">
-</app-project-modal>
