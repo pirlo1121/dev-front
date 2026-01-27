@@ -1,5 +1,5 @@
 import { Component, inject, signal, computed, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ProjectService } from '@core/services/project.service';
 import { IProjectResponse } from '@core/models/project.model';
 import { ProjectModalComponent } from './project-modal/project-modal.component';
@@ -7,7 +7,7 @@ import { ProjectModalComponent } from './project-modal/project-modal.component';
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })

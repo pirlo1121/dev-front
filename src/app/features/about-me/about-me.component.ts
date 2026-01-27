@@ -1,12 +1,12 @@
 import { Component, inject, signal, DOCUMENT } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { UserService } from '@core/services/user.service';
 import { IUser } from '@core/models/user.model';
 
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.css'
 })

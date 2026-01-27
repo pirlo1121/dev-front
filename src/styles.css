@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -442,4 +442,48 @@ body.dark-theme .text-glow {
   /* Larger touch area */
   font-size: 1.05rem;
   /* Slightly larger text */
+}
+
+/* Performance: Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .starfield,
+  .star-layer-1,
+  .star-layer-2,
+  .star-layer-3,
+  .comet-primary,
+  .comet-secondary {
+    animation: none !important;
+    opacity: 0.3 !important;
+  }
+
+  body::before,
+  body::after {
+    animation: none !important;
+  }
+
+  body.dark-theme::after {
+    animation: none !important;
+  }
+}
+
+/* Performance: Remove will-change after animation settles */
+.starfield,
+.star-layer-1,
+.star-layer-2,
+.star-layer-3 {
+  will-change: auto;
+}
+
+body:not(.dark-theme) .starfield {
+  will-change: auto;
 }

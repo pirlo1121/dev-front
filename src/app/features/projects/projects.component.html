@@ -4,7 +4,8 @@
     <div class="projects-grid">
         @for (project of paginatedProjects(); track project._id) {
         <div class="project-card">
-            <img [src]="project.image || 'assets/project-placeholder.jpg'" [alt]="project.name">
+            <img [ngSrc]="project.image || 'assets/project-placeholder.jpg'" [alt]="project.name" loading="lazy"
+                width="400" height="250" class="project-img">
             <div class="card-content">
                 <h3>{{ project.name }}</h3>
                 <p class="subtitle">{{ project.subtitle }}</p>
