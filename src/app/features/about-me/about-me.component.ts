@@ -18,14 +18,9 @@ export class AboutMeComponent {
   isDark = signal(true);
 
   constructor() {
-    // Load saved theme
+    // Read saved theme (theme application is handled by index.html and header)
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      this.isDark.set(savedTheme === 'dark');
-    } else {
-      this.isDark.set(true);
-      localStorage.setItem('theme', 'dark');
-    }
+    this.isDark.set(savedTheme !== 'light');
   }
 
   ngOnInit(): void {
