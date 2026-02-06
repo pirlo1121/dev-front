@@ -15,7 +15,7 @@ export class ProjectsComponent {
   private projectService = inject(ProjectService);
   projects = signal<IProjectResponse[]>([]);
   currentPage = signal(1);
-  itemsPerPage = 4;
+  itemsPerPage = 3;
 
   @Output() openProject = new EventEmitter<IProjectResponse>();
 
