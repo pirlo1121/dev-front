@@ -1,0 +1,301 @@
+/* Journey Section - Dual Theme Support */
+
+.journey-section {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background-color var(--transition-speed) var(--transition-ease);
+}
+
+/* Light Mode - Warm, Paper-like */
+.journey-section {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 50%, var(--bg-secondary) 100%);
+}
+
+/* Dark Mode - Deep Space */
+:host-context(body.dark-theme) .journey-section {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1429 100%);
+}
+
+/* Subtle background glow effect */
+.journey-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-speed) var(--transition-ease);
+}
+
+:host-context(body.dark-theme) .journey-section::before {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+    opacity: 0.5;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.journey-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Intro Text */
+.journey-intro {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+:host-context(body.dark-theme) .journey-intro {
+    color: #e0e7ff;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards Grid */
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Individual Card - Light Mode */
+.journey-card {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--card-shadow);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Individual Card - Dark Mode */
+:host-context(body.dark-theme) .journey-card {
+    background: rgba(30, 35, 60, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.journey-card[data-id="developer"] {
+    animation-delay: 0.3s;
+}
+
+.journey-card[data-id="mentor"] {
+    animation-delay: 0.5s;
+}
+
+.journey-card[data-id="learner"] {
+    animation-delay: 0.7s;
+}
+
+/* Subtle gradient overlay on each card */
+.journey-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* Light mode gradient */
+.journey-card::before {
+    background: linear-gradient(135deg, rgba(44, 36, 32, 0.03) 0%, transparent 100%);
+}
+
+/* Dark mode gradient */
+:host-context(body.dark-theme) .journey-card::before {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+}
+
+/* Hover Effects - Light Mode */
+.journey-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-primary);
+}
+
+/* Hover Effects - Dark Mode */
+:host-context(body.dark-theme) .journey-card:hover {
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.4),
+        0 0 24px rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.journey-card:hover::before {
+    opacity: 1;
+}
+
+/* Card Title */
+.card-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+:host-context(body.dark-theme) .card-title {
+    color: #ffffff;
+}
+
+/* Card Description */
+.card-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+:host-context(body.dark-theme) .card-description {
+    color: #cbd5e1;
+}
+
+/* Tags Container */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: auto;
+}
+
+/* Tag Chips - Light Mode */
+.tag-chip {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Tag Chips - Dark Mode */
+:host-context(body.dark-theme) .tag-chip {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #a5b4fc;
+}
+
+/* Tag Hover - Light Mode */
+.tag-chip:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+/* Tag Hover - Dark Mode */
+:host-context(body.dark-theme) .tag-chip:hover {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: rgba(99, 102, 241, 0.5);
+    color: #c7d2fe;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .journey-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .journey-intro {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    .journey-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .journey-card {
+        padding: 2rem;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-description {
+        font-size: 0.95rem;
+    }
+
+    .tag-chip {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .journey-section {
+        padding: 3rem 1rem;
+    }
+
+    .journey-intro {
+        font-size: 1.1rem;
+    }
+
+    .card-title {
+        font-size: 1.35rem;
+    }
+
+    .card-tags {
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,21 @@
+<section class="journey-section">
+    <div class="journey-container">
+        <!-- Intro Text -->
+        <p class="journey-intro">{{ journeyData.intro }}</p>
+
+        <!-- Cards Grid -->
+        <div class="journey-grid">
+            <article *ngFor="let item of journeyData.items" class="journey-card" [attr.data-id]="item.id">
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p class="card-description">{{ item.description }}</p>
+
+                <!-- Tags -->
+                <div class="card-tags">
+                    <span *ngFor="let tag of item.tags" class="tag-chip">
+                        {{ tag }}
+                    </span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

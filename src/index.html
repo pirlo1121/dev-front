@@ -21,13 +21,14 @@
   <!-- Performance: DNS prefetch for API -->
   <link rel="dns-prefetch" href="https://code-musa.com">
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="fav.svg">
+  <!-- <link rel="alternate icon" type="image/x-icon" href="favicon.ico"> -->
 </head>
 
 <body class="dark-theme">
   <script>
     // Apply theme immediately to prevent flash
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light') {
         document.body.classList.remove('dark-theme');
