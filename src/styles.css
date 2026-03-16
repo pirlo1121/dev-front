@@ -401,22 +401,6 @@ body.dark-theme .starfield {
 }
 
 
-.text-glow {
-  text-shadow: 0 0 1px transparent;
-  transition: text-shadow 0.3s;
-}
-
-body.dark-theme .text-glow {
-  text-shadow: 0 0 15px rgba(167, 139, 250, 0.6);
-}
-
-.glass-panel {
-  background: var(--surface-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-}
-
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -433,15 +417,6 @@ body.dark-theme .text-glow {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
-}
-
-.btn {
-  font-family: var(--font-body);
-  transition: background-color 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out;
-  padding: 0.75rem 1.5rem;
-  /* Larger touch area */
-  font-size: 1.05rem;
-  /* Slightly larger text */
 }
 
 /* Performance: Respect user preference for reduced motion */
