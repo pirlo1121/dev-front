@@ -47,11 +47,11 @@
 
     :host-context(body.dark-theme) .profile-img {
         /* box-shadow: 0 0 20px #a78bfade; */
-        box-shadow: 0 0 70px #a78bfaba;
+        box-shadow: 0 0 50px #a78bfae3;
 
         filter: grayscale(0.2) contrast(1.1);
-        border: 2px solid rgba(255, 255, 255, 0.594);
-        animation: float-hero 8s ease-in-out infinite;
+        border: 4px solid #7f62d7;
+        animation: float-hero 5s ease-in-out infinite;
     }
 
     /* =========================================
