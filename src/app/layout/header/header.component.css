@@ -175,7 +175,7 @@ header.hidden {
    ========================================= */
 @media (max-width: 1400px) {
   .navbar {
-    max-width: 100px;
+    max-width: 1000px;
   }
 
 }
