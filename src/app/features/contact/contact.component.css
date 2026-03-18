@@ -94,6 +94,11 @@
         transition: border-color 0.15s ease-out, background-color 0.15s ease-out, color 0.15s ease-out;
     }
 
+    textarea{
+        resize: vertical;
+        min-height: 100px;
+        max-height: 200px;
+    }
     :host-context(body.dark-theme) input,
     :host-context(body.dark-theme) textarea {
         border-radius: 6px;

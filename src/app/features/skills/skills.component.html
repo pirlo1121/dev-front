@@ -1,8 +1,15 @@
 <section class="skills-container">
     <h2>Skills</h2>
-    <div class="skills-grid">
-        @for (skill of skills(); track skill) {
-        <div class="skill-badge">{{ skill }}</div>
+    <div class="skills-categories">
+        @for (category of groupedSkills(); track category.name) {
+        <div class="skill-category">
+            <span class="category-label">{{ category.name }}</span>
+            <div class="skills-grid">
+                @for (skill of category.skills; track skill) {
+                <div class="skill-badge">{{ skill }}</div>
+                }
+            </div>
+        </div>
         } @empty {
         <p>Loading skills...</p>
         }
