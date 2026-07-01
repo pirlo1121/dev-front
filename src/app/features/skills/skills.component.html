@@ -1,10 +1,11 @@
 <section class="skills-container">
     <h2>Skills</h2>
     <div class="skills-grid">
-        @for (skill of skills(); track skill) {
-        <div class="skill-badge">{{ skill }}</div>
-        } @empty {
-        <p>Loading skills...</p>
+        @for (skill of skills; track skill.name) {
+        <div class="skill-card" [attr.data-skill]="skill.name">
+            <div class="skill-icon" [innerHTML]="skill.iconSafe"></div>
+            <span class="skill-name">{{ skill.name }}</span>
+        </div>
         }
     </div>
 </section>

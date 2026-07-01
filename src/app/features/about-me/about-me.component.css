@@ -1,395 +1,324 @@
-    .about-me-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* justify-content: center; */
-        justify-content: start;
-        margin-top: 2.5rem;
-        min-height: 50vh;
-        padding: 0rem;
-        background-color: transparent;
-        text-align: center;
-        transition: background-color 0.15s ease-out;
-        position: relative;
-        z-index: 1;
-        animation: fadeInUp 0.8s ease-out forwards;
+.about-me-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    min-height: 60vh;
+    background-color: transparent;
+    text-align: center;
+    transition: background-color 0.15s ease-out;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
         opacity: 0;
+        transform: translateY(30px);
     }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    /* Profile Image Wrapper for positioning celestial toggle */
-    .profile-image-wrapper {
-        position: relative;
-        display: inline-block;
+.profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 4px solid rgba(0, 0, 0, 0.696);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.707);
+    transition: box-shadow 0.15s ease-out, border-color 0.15s ease-out, filter 0.15s ease-out;
+}
+
+:host-context(body.dark-theme) .profile-img {
+    box-shadow: 0 0 70px #a78bfaba;
+    filter: grayscale(0.2) contrast(1.1);
+    border: 2px solid rgba(255, 255, 255, 0.594);
+    animation: float-hero 8s ease-in-out infinite;
+}
+
+.celestial-toggle {
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    width: 85px;
+    height: 85px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.15s ease-out;
+}
+
+.celestial-toggle:hover {
+    transform: scale(1.15);
+}
+
+.sun {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sun-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 55px;
+    background: radial-gradient(circle at 30% 30%,
+            #fffbe6 0%, #fff176 20%, #ffd700 40%, #ffb300 60%, #ff8c00 80%, #ff5722 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 25px #ffd700, 0 0 50px #ff8c00, 0 0 80px #ff5722, 0 0 120px rgba(255, 87, 34, 0.4),
+        inset -6px -6px 12px rgba(255, 69, 0, 0.5), inset 3px 3px 8px rgba(255, 255, 200, 0.3);
+    animation: sun-pulse 3s ease-in-out infinite;
+}
+
+.sun-rays {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, rgba(255, 140, 0, 0.3) 40%, transparent 70%);
+    border-radius: 50%;
+    animation: sun-glow 2s ease-in-out infinite alternate;
+}
+
+.sun::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 12px 0 8px -5px rgba(255, 200, 0, 0.5), -12px 0 8px -5px rgba(255, 200, 0, 0.5),
+        0 12px 8px -5px rgba(255, 200, 0, 0.5), 0 -12px 8px -5px rgba(255, 200, 0, 0.5);
+    animation: sun-flare 4s ease-in-out infinite;
+}
+
+@keyframes sun-flare {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) rotate(0deg);
     }
-
-    .profile-img {
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 1.5rem;
-        border: 4px solid rgba(0, 0, 0, 0.696);
-        box-shadow: 0 4px 40px rgba(0, 0, 0, 0.707);
-        transition: box-shadow 0.15s ease-out, border-color 0.15s ease-out, filter 0.15s ease-out;
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(45deg);
     }
+}
 
-    :host-context(body.dark-theme) .profile-img {
-        /* box-shadow: 0 0 20px #a78bfade; */
-        box-shadow: 0 0 70px #a78bfaba;
-
-        filter: grayscale(0.2) contrast(1.1);
-        border: 2px solid rgba(255, 255, 255, 0.594);
-        animation: float-hero 8s ease-in-out infinite;
+@keyframes sun-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
     }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
 
-    /* =========================================
-       Celestial Theme Toggle (Sun/Moon)
-       ========================================= */
+@keyframes sun-glow {
+    0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.moon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.moon-surface {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background: radial-gradient(circle at 35% 35%, #f5f5f5, #d4d4d4 50%, #a0a0a0 100%);
+    border-radius: 50%;
+    box-shadow: inset -8px -6px 15px rgba(80, 80, 80, 0.6), 0 0 15px rgba(200, 200, 200, 0.5),
+        0 0 30px rgba(150, 150, 150, 0.3);
+}
+
+.moon-crater {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #b0b0b0, #888 70%);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.crater-1 {
+    width: 10px;
+    height: 10px;
+    top: 18px;
+    left: 22px;
+}
+
+.crater-2 {
+    width: 7px;
+    height: 7px;
+    top: 30px;
+    left: 32px;
+}
+
+.crater-3 {
+    width: 5px;
+    height: 5px;
+    top: 25px;
+    left: 18px;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    transition: text-shadow 0.15s ease-out, color 0.15s ease-out;
+}
+
+:host-context(body.dark-theme) h2 {
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+.bio {
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: 2rem;
+    line-height: var(--line-height-base, 1.6);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+:host-context(body.dark-theme) .bio {
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: background-color 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out, border-color 0.15s ease-out;
+    background: var(--surface-bg);
+    backdrop-filter: blur(5px);
+    font-size: 0.95rem;
+}
+
+:host-context(body.dark-theme) .social-links a {
+    border-radius: 8px;
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.social-links a:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+}
+
+:host-context(body.dark-theme) .social-links a:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+@media (max-width: 768px) {
+    .about-me-container {
+        padding: 0 1.5rem;
+    }
     .celestial-toggle {
-        position: absolute;
-        top: -35px;
-        right: -35px;
-        width: 85px;
-        height: 85px;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        z-index: 10;
-        transition: transform 0.15s ease-out;
+        width: 50px;
+        height: 50px;
+        top: -10px;
+        right: -10px;
     }
-
-    .celestial-toggle:hover {
-        transform: scale(1.15);
-    }
-
-    /* ---- Sun (Realistic with Corona) ---- */
-    .sun {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
     .sun-core {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 55px;
-        height: 55px;
-        background: radial-gradient(circle at 30% 30%,
-                #fffbe6 0%,
-                #fff176 20%,
-                #ffd700 40%,
-                #ffb300 60%,
-                #ff8c00 80%,
-                #ff5722 100%);
-        border-radius: 50%;
-        box-shadow:
-            0 0 25px #ffd700,
-            0 0 50px #ff8c00,
-            0 0 80px #ff5722,
-            0 0 120px rgba(255, 87, 34, 0.4),
-            inset -6px -6px 12px rgba(255, 69, 0, 0.5),
-            inset 3px 3px 8px rgba(255, 255, 200, 0.3);
-        animation: sun-pulse 3s ease-in-out infinite;
+        width: 32px;
+        height: 32px;
     }
-
-    /* Sun Corona/Rays */
     .sun-rays {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        background:
-            radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, rgba(255, 140, 0, 0.3) 40%, transparent 70%);
-        border-radius: 50%;
-        animation: sun-glow 2s ease-in-out infinite alternate;
-    }
-
-    /* Additional Sun Detail - Solar Flares */
-    .sun::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: transparent;
-        box-shadow:
-            12px 0 8px -5px rgba(255, 200, 0, 0.5),
-            -12px 0 8px -5px rgba(255, 200, 0, 0.5),
-            0 12px 8px -5px rgba(255, 200, 0, 0.5),
-            0 -12px 8px -5px rgba(255, 200, 0, 0.5);
-        animation: sun-flare 4s ease-in-out infinite;
-    }
-
-    @keyframes sun-flare {
-
-        0%,
-        100% {
-            opacity: 0.6;
-            transform: translate(-50%, -50%) rotate(0deg);
-        }
-
-        50% {
-            opacity: 1;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-    }
-
-    @keyframes sun-pulse {
-
-        0%,
-        100% {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        50% {
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-    }
-
-    @keyframes sun-glow {
-        0% {
-            opacity: 0.6;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-    }
-
-    /* ---- Moon (Realistic) ---- */
-    .moon {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .moon-surface {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         width: 45px;
         height: 45px;
-        background: radial-gradient(circle at 35% 35%, #f5f5f5, #d4d4d4 50%, #a0a0a0 100%);
-        border-radius: 50%;
-        box-shadow:
-            inset -8px -6px 15px rgba(80, 80, 80, 0.6),
-            0 0 15px rgba(200, 200, 200, 0.5),
-            0 0 30px rgba(150, 150, 150, 0.3);
     }
-
-    /* Moon Craters */
-    .moon-crater {
-        position: absolute;
-        border-radius: 50%;
-        background: radial-gradient(circle at 40% 40%, #b0b0b0, #888 70%);
-        box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+    .moon-surface {
+        width: 36px;
+        height: 36px;
     }
-
-    .crater-1 {
-        width: 10px;
-        height: 10px;
-        top: 18px;
-        left: 22px;
-    }
-
-    .crater-2 {
-        width: 7px;
-        height: 7px;
-        top: 30px;
-        left: 32px;
-    }
-
-    .crater-3 {
-        width: 5px;
-        height: 5px;
-        top: 25px;
-        left: 18px;
-    }
-
-    /* =========================================
-       Text Styles
-       ========================================= */
     h2 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: var(--text-color);
-        transition: text-shadow 0.15s ease-out, color 0.15s ease-out;
+        font-size: 2rem;
     }
-
-    :host-context(body.dark-theme) h2 {
-        text-shadow: 0 0 10px var(--accent-glow);
-    }
-
     h3 {
-        font-size: 1.5rem;
-        /* color: var(--text-secondary); */
-        color: var(--accent-primary);
-        font-weight: bold;
-        /* color: white; */
-
-
-        margin-bottom: .5rem;
-        letter-spacing: 0.05em;
+        font-size: 1rem;
     }
-
     .bio {
-        max-width: 600px;
-        width: 100%;
-        margin-bottom: 2rem;
-        line-height: var(--line-height-base, 1.6);
-        color: var(--text-color);
+        font-size: 1rem;
+        max-width: 100%;
+    }
+}
 
-        font-size: 1.1rem;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        word-break: break-word;
+@media (max-width: 480px) {
+    .about-me-container {
         padding: 0 1rem;
-        box-sizing: border-box;
     }
-
-    :host-context(body.dark-theme) .bio {
-        color: var(--text-primary);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    .profile-img {
+        width: 250px;
+        height: 250px;
     }
-
-    /* =========================================
-       Social Links
-       ========================================= */
-    .social-links {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
+    .celestial-toggle {
+        width: 45px;
+        height: 45px;
+        top: -8px;
+        right: -8px;
     }
-
+    h2 {
+        font-size: 1.75rem;
+    }
     .social-links a {
-        text-decoration: none;
-        color: var(--text-primary);
-        font-weight: bold;
-        width: 30%;
         padding: 0.5rem 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 2px;
-        transition: background-color 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out, border-color 0.15s ease-out;
-        background: var(--surface-bg);
-        backdrop-filter: blur(5px);
+        font-size: 0.9rem;
     }
-
-    :host-context(body.dark-theme) .social-links a {
-        border-radius: 4px;
-        border-color: var(--accent-primary);
-        color: var(--accent-primary);
-    }
-
-    .social-links a:hover {
-        background: var(--text-primary);
-        color: var(--bg-primary);
-        transform: translateY(-2px);
-    }
-
-    :host-context(body.dark-theme) .social-links a:hover {
-        background: var(--accent-primary);
-        color: #fff;
-        box-shadow: 0 0 15px var(--accent-glow);
-    }
-
-    /* =========================================
-       Mobile Responsiveness
-       ========================================= */
-    @media (max-width: 768px) {
-        .about-me-container {
-            padding: 0 1.5rem;
-        }
-
-        /* .profile-img {
-            width: 180px;
-            height: 180px;
-        } */
-
-        .celestial-toggle {
-            width: 50px;
-            height: 50px;
-            top: -10px;
-            right: -10px;
-        }
-
-        .sun-core {
-            width: 32px;
-            height: 32px;
-        }
-
-        .sun-rays {
-            width: 45px;
-            height: 45px;
-        }
-
-        .moon-surface {
-            width: 36px;
-            height: 36px;
-        }
-
-        h2 {
-            font-size: 2rem;
-        }
-
-        h3 {
-            font-size: 1rem;
-        }
-
-        .bio {
-            font-size: 1rem;
-            max-width: 100%;
-        }
-
-        .social-links {
-            flex-wrap: wrap;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .about-me-container {
-            padding: 0 1rem;
-        }
-
-        .profile-img {
-            width: 250px;
-            height: 250px;
-        }
-
-        .celestial-toggle {
-            width: 45px;
-            height: 45px;
-            top: -8px;
-            right: -8px;
-        }
-
-        h2 {
-            font-size: 1.75rem;
-        }
-
-        .social-links a {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.9rem;
-        }
-    }
+}

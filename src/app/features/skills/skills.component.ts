@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { UserService } from '@core/services/user.service';
+import { skillsData, Skill } from '@core/data/skills.data';
 
 @Component({
   selector: 'app-skills',
@@ -10,17 +11,10 @@ import { UserService } from '@core/services/user.service';
   styleUrl: './skills.component.css'
 })
 export class SkillsComponent {
-  private userService = inject(UserService);
-  skills = signal<string[]>([]);
+  private sanitizer = inject(DomSanitizer);
 
-  constructor() {
-    this.userService.getUser('696c287de69192f9b00097c6').subscribe({
-      next: (resp) => {
-        if (resp && resp.user.skills) {
-          this.skills.set(resp.user.skills);
-        }
-      },
-      error: (err) => console.error('Error loading skills', err)
-    });
-  }
+  skills: (Skill & { iconSafe: SafeHtml })[] = skillsData.map(skill => ({
+    ...skill,
+    iconSafe: this.sanitizer.bypassSecurityTrustHtml(skill.icon)
+  }));
 }
